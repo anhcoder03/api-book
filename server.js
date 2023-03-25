@@ -17,7 +17,7 @@ app.use(morgan("combined"));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://book-wine.vercel.app/", "http://localhost:5173"],
+    origin: "https://book-wine.vercel.app",
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
   })
