@@ -3,7 +3,7 @@ require("dotenv").config();
 async function connect() {
   try {
     await mongoose.connect(
-      `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@book.vb9opmk.mongodb.net/?retryWrites=true&w=majority`,
+      `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@book.vb9opmk.mongodb.net/book-shop`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
