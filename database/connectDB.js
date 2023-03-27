@@ -4,6 +4,7 @@ async function connect() {
   try {
     await mongoose.connect(
       `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@book.vb9opmk.mongodb.net/book-shop`,
+      // "mongodb://127.0.0.1:27017/book-shop",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
