@@ -119,9 +119,10 @@ class UserController {
           image: formData.image,
         };
         User.updateOne({ _id: id }, user)
-          .then(() =>
+          .then((data) =>
             res.status(201).json({
               message: "Cập nhật thành công!",
+              data,
             })
           )
           .catch((err) => {
