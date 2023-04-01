@@ -1,5 +1,6 @@
 const Order = require("../models/Order");
 const Product = require("../models/Product");
+const OrderDetail = require("../models/OrderDetail");
 
 class OrderController {
   insertOrder = async (req, res) => {
@@ -14,7 +15,6 @@ class OrderController {
         totalAmount,
       });
       await order.save();
-
       // Lưu chi tiết đơn hàng
       for (let i = 0; i < products.length; i++) {
         const product = await Product.findById(products[i].id);
