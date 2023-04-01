@@ -3,6 +3,7 @@ const route = express.Router();
 const userController = require("../controller/AuthController");
 const CategoryController = require("../controller/CategoryController");
 const CommentController = require("../controller/CommentController");
+const OrderController = require("../controller/OrderController");
 const ProductController = require("../controller/ProductController");
 const { verifyTokenAdmin, verifyToken } = require("../middleware/auth");
 
@@ -39,6 +40,9 @@ function router(app) {
 
   route.post("/addComment", verifyToken, CommentController.addComment);
   route.get("/getCommentAll/:productId", CommentController.getCommentAll);
+
+  route.post("/insertOrder", OrderController.insertOrder);
+
   return app.use(route);
 }
 

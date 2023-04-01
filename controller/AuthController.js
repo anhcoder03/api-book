@@ -122,7 +122,6 @@ class UserController {
           .then((data) =>
             res.status(201).json({
               message: "Cập nhật thành công!",
-              data,
             })
           )
           .catch((err) => {
