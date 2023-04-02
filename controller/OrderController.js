@@ -37,18 +37,24 @@ class OrderController {
       res.status(500).json({ message: "Internal server error" });
     }
   };
-  getOrders = (req, res) => {
-    const litmit = req.query.limit ? parseInt(req.query.limit) : 10;
-    Order.find({})
-      .limit(litmit)
-      .then((data) => {
-        if (data) {
-          res.status(200).json(data);
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(err);
+  getOrders = async (req, res) => {
+    let { page = 1 } = req.query;
+    const limit = req.query.limit ? parseInt(req.query.limit) : 10;
+    try {
+      const data = await Order.find({})
+        .skip((+page - 1) * +limit)
+        .limit(limit);
+      const totalProduct = Product.count(category && { category });
+      const totalPage = Math.ceil(totalProduct / +limit);
+      return res.status(200).jsonp({
+        success: true,
+        message: "Good job",
+        data,
+        totalPage,
       });
+    } catch (err) {
+      res.status(500).json(err);
+    }
   };
   getOrderDetail = (req, res) => {
     const order = req.params.order;

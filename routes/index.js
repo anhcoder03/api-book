@@ -43,7 +43,7 @@ function router(app) {
 
   route.post("/insertOrder", OrderController.insertOrder);
   route.get("/getOrders", OrderController.getOrders);
-  route.get("/getOrderDetail/:order", OrderController.getOrders);
+  route.get("/getOrderDetail/:order", OrderController.getOrderDetail);
 
   return app.use(route);
 }
