@@ -46,9 +46,9 @@ class OrderController {
       const data = await Order.find({})
         .skip((+page - 1) * +limit)
         .limit(limit);
-      const totalProduct = Product.count(category && { category });
-      const totalPage = Math.ceil(totalProduct / +limit);
-      return res.status(200).jsonp({
+      const totalOrder = await Order.count({});
+      const totalPage = Math.ceil(totalOrder / +limit);
+      return res.status(200).json({
         success: true,
         message: "Good job",
         data,
