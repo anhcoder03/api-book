@@ -24,9 +24,11 @@ class OrderController {
         }
         const orderDetail = new OrderDetail({
           order: order._id,
-          product: product._id,
+          productId: product._id,
+          title: product.title,
+          image: product.image,
           quantity: products[i].quantity,
-          price: product.price,
+          price: products[i].price,
         });
         await orderDetail.save();
       }

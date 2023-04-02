@@ -8,9 +8,16 @@ const OrderDetail = new Schema(
       ref: "Order",
       required: true,
     },
-    product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+    productId: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
       required: true,
     },
     quantity: {
