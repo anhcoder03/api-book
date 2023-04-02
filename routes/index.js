@@ -42,6 +42,8 @@ function router(app) {
   route.get("/getCommentAll/:productId", CommentController.getCommentAll);
 
   route.post("/insertOrder", OrderController.insertOrder);
+  route.get("/getOrders", OrderController.getOrders);
+  route.get("/getOrderDetail/:order", OrderController.getOrders);
 
   return app.use(route);
 }
