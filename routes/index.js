@@ -10,8 +10,8 @@ const { verifyTokenAdmin, verifyToken } = require("../middleware/auth");
 function router(app) {
   //auth
   route.post("/register", userController.register);
-  route.get("/getUsers", userController.getUsers);
-  route.get("/getUser/:id", userController.getUser);
+  route.get("/getUsers", verifyTokenAdmin, userController.getUsers);
+  route.get("/getUser/:id", verifyToken, userController.getUser);
   route.post("/login", userController.login);
   route.put("/updateUser/:id", verifyToken, userController.updateUser);
   route.delete("/deleteUser/:id", verifyTokenAdmin, userController.deleteUser);
@@ -20,19 +20,43 @@ function router(app) {
 
   //category
 
-  route.post("/create_category", CategoryController.createCate);
-  route.put("/update_category/:id", CategoryController.updateCate);
-  route.delete("/delete_category/:id", CategoryController.deleteCate);
+  route.post(
+    "/create_category",
+    verifyTokenAdmin,
+    CategoryController.createCate
+  );
+  route.put(
+    "/update_category/:id",
+    verifyTokenAdmin,
+    CategoryController.updateCate
+  );
+  route.delete(
+    "/delete_category/:id",
+    verifyTokenAdmin,
+    CategoryController.deleteCate
+  );
   route.get("/get_category_all", CategoryController.getCateAll);
   route.get("/get_category/:id", CategoryController.getCateById);
 
   //product
-  route.post("/create_product", ProductController.createProduct);
-  route.put("/update_product/:id", ProductController.updateProduct);
+  route.post(
+    "/create_product",
+    verifyTokenAdmin,
+    ProductController.createProduct
+  );
+  route.put(
+    "/update_product/:id",
+    verifyTokenAdmin,
+    ProductController.updateProduct
+  );
   route.get("/getProductAll", ProductController.getProductAll);
   route.get("/getProduct/:slug", ProductController.getProduct);
   route.get("/getProductById/:id", ProductController.getProductById);
-  route.delete("/delete_product/:id", ProductController.deleteProduct);
+  route.delete(
+    "/delete_product/:id",
+    verifyTokenAdmin,
+    ProductController.deleteProduct
+  );
   route.get(
     "/product_of_category/:category",
     ProductController.getProductByCategory
@@ -41,9 +65,13 @@ function router(app) {
   route.post("/addComment", verifyToken, CommentController.addComment);
   route.get("/getCommentAll/:productId", CommentController.getCommentAll);
 
-  route.post("/insertOrder", OrderController.insertOrder);
-  route.get("/getOrders", OrderController.getOrders);
-  route.get("/getOrderDetail/:order", OrderController.getOrderDetail);
+  route.post("/insertOrder", verifyToken, OrderController.insertOrder);
+  route.get("/getOrders", verifyToken, OrderController.getOrders);
+  route.get(
+    "/getOrderDetail/:order",
+    verifyToken,
+    OrderController.getOrderDetail
+  );
 
   return app.use(route);
 }
