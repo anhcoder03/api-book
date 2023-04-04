@@ -179,7 +179,7 @@ class ProductController {
         const query = search.replace(/['"]+/g, "");
         let replace = `${query}`;
         let re = new RegExp(replace, "i");
-        const data = await Product.find({ title: re });
+        const data = await Product.find({ title: re }).limit(limit);
         return res.status(200).jsonp({
           success: true,
           message: `Thành công`,
