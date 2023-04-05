@@ -41,7 +41,7 @@ class CommentController {
         });
       });
   };
-  getCommentAll = (req, res) => {
+  getCommentById = (req, res) => {
     const productId = req.params.productId;
     Comment.find({ productId: productId })
       .then((data) => {
@@ -58,6 +58,20 @@ class CommentController {
       .catch((err) => {
         res.status(403).json("Lỗi " + err);
       });
+  };
+
+  getCommentAll = async (req, res) => {
+    try {
+      const data = await Comment.find({});
+      if (data) {
+        res.status(200).json({
+          data,
+          message: "Oke lala",
+        });
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
   };
 }
 module.exports = new CommentController();

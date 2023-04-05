@@ -63,7 +63,8 @@ function router(app) {
   );
 
   route.post("/addComment", verifyToken, CommentController.addComment);
-  route.get("/getCommentAll/:productId", CommentController.getCommentAll);
+  route.post("/getCommentAll", verifyToken, CommentController.getCommentAll);
+  route.get("/getCommentById/:productId", CommentController.getCommentById);
 
   route.post("/insertOrder", verifyToken, OrderController.insertOrder);
   route.get("/getOrders", verifyToken, OrderController.getOrders);
