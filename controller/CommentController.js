@@ -61,11 +61,18 @@ class CommentController {
   };
 
   getCommentAll = async (req, res) => {
+    let { page = 1 } = req.query;
+    const limit = req.query.limit ? parseInt(req.query.limit) : 10;
     try {
-      const data = await Comment.find({});
+      const data = await Comment.find({})
+        .skip((+page - 1) * +limit)
+        .limit(limit);
+      const totalComment = await Comment.count({});
+      const totalPage = Math.ceil(totalComment / +limit);
       if (data) {
         res.status(200).json({
           data,
+          totalPage,
           message: "Oke lala",
         });
       }
