@@ -77,6 +77,7 @@ function router(app) {
 
   route.post("/insertOrder", verifyToken, OrderController.insertOrder);
   route.get("/getOrders", verifyToken, OrderController.getOrders);
+  route.get("/getOrderById/:id", verifyToken, OrderController.getOrderById);
   route.get(
     "/getOrderDetail/:order",
     verifyToken,

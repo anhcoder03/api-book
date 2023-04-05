@@ -70,5 +70,16 @@ class OrderController {
         res.status(500).json(err);
       });
   };
+
+  getOrderById = async (req, res) => {
+    try {
+      const data = await Order.findById(req.params.id);
+      res.status(200).json({
+        data,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 module.exports = new OrderController();
