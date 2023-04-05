@@ -69,6 +69,11 @@ function router(app) {
     CommentController.getCommentAll
   );
   route.get("/getCommentById/:productId", CommentController.getCommentById);
+  route.delete(
+    "/deleteComment/:id",
+    verifyTokenAdmin,
+    CommentController.deleteComment
+  );
 
   route.post("/insertOrder", verifyToken, OrderController.insertOrder);
   route.get("/getOrders", verifyToken, OrderController.getOrders);

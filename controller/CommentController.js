@@ -80,5 +80,15 @@ class CommentController {
       res.status(500).json(err);
     }
   };
+  deleteComment = async (req, res) => {
+    try {
+      await Comment.findByIdAndDelete(req.params.id);
+      req.status(200).json({
+        message: "Xoá comment thành công!",
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 module.exports = new CommentController();
