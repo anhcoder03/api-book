@@ -113,5 +113,20 @@ class OrderController {
       res.status(500).json(err);
     }
   };
+
+  getOrderByUser = async (req, res) => {
+    const username = req.params.username;
+    try {
+      const data = await Order.find({ username: username });
+      if (data) {
+        res.status(200).json({
+          message: "Oke lala!",
+          data,
+        });
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 module.exports = new OrderController();
