@@ -100,5 +100,18 @@ class OrderController {
       res.status(500).json(err);
     }
   };
+
+  deleteOrder = async (req, res) => {
+    const id = req.params.id;
+    try {
+      await Order.findByIdAndDelete(id);
+      await OrderDetail.deleteOne({ order: id });
+      res.status(200).json({
+        message: "Xoá đơn hàng thành công!",
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 module.exports = new OrderController();

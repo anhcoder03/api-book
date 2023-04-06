@@ -8,7 +8,7 @@ const Order = new Schema(
     phone: { type: Number, require: true },
     address: { type: String, require: true },
     totalAmount: { type: Number, require: true },
-    status: { type: String, default: "Pendding" },
+    status: { type: String, default: "Chờ xác nhận" },
   },
   {
     timestamps: true,

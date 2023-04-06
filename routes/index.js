@@ -84,6 +84,7 @@ function router(app) {
     OrderController.getOrderDetail
   );
   route.put("/updateOrder/:id", verifyTokenAdmin, OrderController.updateOrder);
+  route.delete("/deleteOrder/:id", verifyToken, OrderController.deleteOrder);
 
   return app.use(route);
 }
