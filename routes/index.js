@@ -83,6 +83,7 @@ function router(app) {
     verifyToken,
     OrderController.getOrderDetail
   );
+  route.put("/updateOrder/:id", verifyTokenAdmin, OrderController.updateOrder);
 
   return app.use(route);
 }

@@ -81,5 +81,24 @@ class OrderController {
       res.status(500).json(err);
     }
   };
+  updateOrder = async (req, res) => {
+    const id = req.params.id;
+    const formData = req.body;
+    try {
+      const data = await Order.findById(id);
+      if (data) {
+        const order = {
+          status: formData.status,
+        };
+        const newOrder = await Order.updateOne({ _id: id }, order);
+        res.status(200).json({
+          message: "Cập nhật thành công!",
+          newOrder,
+        });
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
 module.exports = new OrderController();

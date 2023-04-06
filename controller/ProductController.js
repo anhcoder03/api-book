@@ -120,22 +120,6 @@ class ProductController {
         });
       });
   }
-  // getCateAll(req, res, next) {
-  //   Category.find({})
-  //     .then((data) => {
-  //       res.status(200).json({
-  //         success: true,
-  //         message: "Thành công",
-  //         data: data,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       res.status(400).json({
-  //         success: false,
-  //         message: `Lỗi : ${err}`,
-  //       });
-  //     });
-  // }
   getProduct(req, res, next) {
     const slug = req.params.slug;
     Product.findOne({ slug: slug })
