@@ -19,7 +19,6 @@ function router(app) {
   route.post("/logout", userController.logout);
 
   //category
-
   route.post(
     "/create_category",
     verifyTokenAdmin,

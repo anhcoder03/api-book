@@ -3,7 +3,6 @@ const morgan = require("morgan");
 const app = express();
 const port = 1234;
 const cors = require("cors");
-
 const cookieParser = require("cookie-parser");
 app.use(express.urlencoded());
 app.use(express.json());
@@ -17,7 +16,6 @@ app.use(morgan("combined"));
 app.use(cookieParser());
 app.use(
   cors({
-    // origin: "https://book-wine.vercel.app",
     origin: ["http://localhost:5173", "https://book-wine.vercel.app"],
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,

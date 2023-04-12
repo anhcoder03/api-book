@@ -34,7 +34,6 @@ class CategoryController {
   updateCate(req, res, next) {
     const id = req.params.id;
     const { categoryName } = req.body;
-
     if (!categoryName) {
       return res.status(400).json({
         success: false,

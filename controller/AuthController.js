@@ -173,7 +173,7 @@ class UserController {
           id: user._id,
           admin: user.admin,
         },
-        process.env.ACCESS_KEY,
+        process.env.REFRESH_KEY,
         { expiresIn: "30d" }
       );
       refreshTokens(newRefreshToken);
