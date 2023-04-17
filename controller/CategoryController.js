@@ -46,9 +46,7 @@ class CategoryController {
         if (!category) {
           res.json("Danh mục không tồn tại!");
         }
-        // Update the category object with the new data
         category.categoryName = categoryName;
-        // Update the slug field based on the new categoryName value
         category.slug = slugify(categoryName, { lower: true });
 
         return category.save();

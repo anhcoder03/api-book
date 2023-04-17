@@ -5,10 +5,12 @@ const CategoryController = require("../controller/CategoryController");
 const CommentController = require("../controller/CommentController");
 const OrderController = require("../controller/OrderController");
 const ProductController = require("../controller/ProductController");
+const StatisticalController = require("../controller/StatisticalController");
 const { verifyTokenAdmin, verifyToken } = require("../middleware/auth");
 
 function router(app) {
   //auth
+  route.get("/statistical", StatisticalController.statistical);
   route.post("/register", userController.register);
   route.get("/getUsers", verifyTokenAdmin, userController.getUsers);
   route.get("/getUser/:id", verifyToken, userController.getUser);
